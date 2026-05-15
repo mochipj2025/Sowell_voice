@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sowellistの現状を静かに整理し、フォームで共有するための説明ページです。">
+  <title>Sowellist 現状共有フォーム | Sowell®︎について</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f2ea;
+      --paper-soft: #fbf8f2;
+      --ink: #2f2924;
+      --muted: #746b62;
+      --line: #e3d7c8;
+      --accent: #8d6840;
+      --accent-soft: #efe2d0;
+      --gray: #aaa49b;
+      --white: rgba(255, 255, 255, 0.78);
+      --shadow: 0 22px 60px rgba(91, 72, 51, 0.10);
+      --radius: 18px;
+      --content: 760px;
+      --wide: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 280px),
+        radial-gradient(circle at 18% 0%, rgba(225, 205, 176, 0.34), transparent 34%),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+      font-size: 16px;
+      line-height: 2.05;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site {
+      min-height: 100svh;
+      overflow: hidden;
+    }
+
+    .hero {
+      width: min(100%, var(--wide));
+      margin: 0 auto;
+      padding: clamp(14px, 3vw, 28px) clamp(14px, 3.5vw, 36px) clamp(26px, 5vw, 64px);
+    }
+
+    .hero img,
+    .figure img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--paper-soft);
+    }
+
+    .article {
+      width: min(100% - 34px, var(--content));
+      margin: 0 auto;
+      padding-bottom: clamp(58px, 11vw, 120px);
+    }
+
+    .intro,
+    .section,
+    .cta {
+      padding: clamp(24px, 5vw, 44px) 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.72rem, 7vw, 2.72rem);
+    }
+
+    h2 {
+      font-size: clamp(1.36rem, 5vw, 2.08rem);
+    }
+
+    .lead,
+    .body-copy {
+      margin-top: clamp(22px, 4vw, 34px);
+      color: var(--muted);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 1.25em;
+    }
+
+    .body-copy p,
+    .lead p {
+      text-wrap: pretty;
+    }
+
+    .figure {
+      width: min(100vw - 28px, var(--wide));
+      margin: clamp(10px, 3vw, 22px) 50% clamp(18px, 5vw, 52px);
+      transform: translateX(-50%);
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .note {
+      margin-top: clamp(28px, 5vw, 44px);
+      padding: clamp(22px, 5vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 16px 44px rgba(91, 72, 51, 0.07);
+    }
+
+    .cta {
+      margin-top: clamp(10px, 4vw, 24px);
+      padding: clamp(30px, 6vw, 52px);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(244, 235, 222, 0.74)),
+        var(--paper-soft);
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(1.54rem, 6vw, 2.32rem);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 18px;
+      margin-top: clamp(28px, 5vw, 38px);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 13px 25px 14px;
+      border: 1px solid rgba(112, 78, 42, 0.25);
+      border-radius: 999px;
+      background: #8c6842;
+      color: #fffaf4;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.96rem;
+      font-weight: 650;
+      line-height: 1.3;
+      text-decoration: none;
+      box-shadow: 0 12px 28px rgba(99, 68, 35, 0.20);
+      transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: #795934;
+      box-shadow: 0 15px 34px rgba(99, 68, 35, 0.24);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid rgba(141, 104, 64, 0.32);
+      outline-offset: 4px;
+    }
+
+    .cta-note {
+      margin: 0;
+      color: var(--gray);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    .footer {
+      width: min(100% - 34px, var(--content));
+      margin: 0 auto;
+      padding: 0 0 44px;
+      color: var(--gray);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 15.5px;
+        line-height: 1.95;
+      }
+
+      .hero {
+        width: 100%;
+        padding-inline: 10px;
+      }
+
+      .hero img,
+      .figure img {
+        border-radius: 14px;
+      }
+
+      .article {
+        width: min(100% - 30px, var(--content));
+      }
+
+      .figure {
+        width: min(100vw - 20px, var(--wide));
+      }
+
+      .cta {
+        padding: 26px 20px 28px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .cta-note {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="site">
+    <header class="hero" aria-label="Sowellist 現状共有フォーム">
+      <img src="./images/01_header.png" alt="想いは理解している。でも、現場には動けない理由がある。">
+    </header>
+
+    <article class="article">
+      <section class="intro">
+        <p class="eyebrow">Sowellist note</p>
+        <h1>Sowell®︎について、現場側から感じていること</h1>
+        <div class="lead">
+          <p>先生の書いていることは理解できますし、共感する部分もあります。</p>
+          <p>ただ、私がSowell®︎に関わり始めてから感じているのは、先生の想いと、実際にSowellistとして関わっている人たちの現実との間に、少し大きなズレがあるということです。</p>
+          <p>これは、どちらが正しい・間違っているという話ではありません。</p>
+          <p>立場や目的の違いによって、自然に生まれているズレだと思っています。</p>
+          <p>だからこそ、一度そこを整理して共有したいと思います。</p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <img src="./images/02_gap.png" alt="先生側の想いと現場側の現実の間にある前提の違いを整理した図解">
+      </figure>
+
+      <section class="section">
+        <h2>Sowellistになった理由は、人によって違う</h2>
+        <div class="body-copy">
+          <p>Sowellistになった人すべてが、最初からSowell®︎を広めたいと思って参加しているわけではないと思います。</p>
+          <p>もちろん、Sowell®︎そのものに魅力を感じている人は多いと思います。</p>
+          <p>ただ実際には、サロンの差別化をしたい、他店と違う武器が欲しい、施術の負担を減らしたい、お客様への提案の幅を増やしたい、という現実的な理由で導入している人も多いはずです。</p>
+          <p>これは悪いことではありません。</p>
+          <p>個人サロンという業態では、自分のサロンを守ることも大切な仕事です。</p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <img src="./images/03_reason.png" alt="やる気がないのではなく動き方が見えていない状態を整理した図解">
+      </figure>
+
+      <section class="section">
+        <h2>やる気がないのではなく、動き方が見えていない</h2>
+        <div class="body-copy">
+          <p>今起きていることは、やる気がないという話ではなく、どう動けばいいのかが見えていない状態に近いと思っています。</p>
+          <p>たとえば、説明方法が分からない。<br>公式の説明と個人の見解の境界が曖昧。<br>SNS発信をしたくても、自店舗のブランディングとの兼ね合いがある。<br>時間を使う理由やメリットが見えにくい。</p>
+          <p>こうした状態で、ただ動いてくださいと言われても、現場側は動きづらいのが本音だと思います。</p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <img src="./images/04_nextstep.png" alt="現状の見える化から必要な仕組み作りへ進むための流れ">
+      </figure>
+
+      <section class="section">
+        <h2>まず必要なのは、現状の見える化</h2>
+        <div class="body-copy">
+          <p>今必要なのは、想いを否定することではなく、現状を見える化することだと思います。</p>
+          <p>それぞれが何を目的にSowell®︎に関わっているのか。<br>何に困っているのか。<br>どこまでなら関われるのか。<br>どんな仕組みがあれば動きやすいのか。</p>
+          <p>そこを一度整理することで、責め合うのではなく、続けるための形が見えてくると思っています。</p>
+        </div>
+      </section>
+
+      <figure class="figure">
+        <img src="./images/05_form.png" alt="Sowellist 現状共有フォームへの回答を案内する図解">
+      </figure>
+
+      <section class="cta" aria-labelledby="form-title">
+        <p class="eyebrow">Current sharing form</p>
+        <h2 id="form-title">Sowellist 現状共有フォーム</h2>
+        <div class="body-copy">
+          <p>LINE上だと、その場の空気や感情で意見がぶつかりやすく、お互いに消耗してしまうこともあると思っています。</p>
+          <p>なので、一度みなさんの考えや気持ちを、フォームで整理させてください。</p>
+          <p>回答内容は、誰が書いたか分からない形でまとめます。<br>誰かを責める目的ではなく、現状の把握が目的です。</p>
+          <p>できれば1週間以内を目安にご回答いただけると助かります。</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSesxX0emSf-J8Yi9DauIZUrw9Oczn2A2AMywQXXRkhHeM5zyw/viewform" target="_blank" rel="noopener noreferrer">フォームに回答する</a>
+          <p class="cta-note">Googleフォームが新しいタブで開きます。</p>
+        </div>
+      </section>
+    </article>
+
+    <footer class="footer">
+      <p>Sowellistの現状を、静かに整理するための共有ページです。</p>
+    </footer>
+  </main>
+</body>
+</html>
